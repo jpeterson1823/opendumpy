@@ -1,4 +1,4 @@
-# OpenDumpy: The Open-Source GB/GBC Cartridge Dumper
+# OpenDumpy: GB/C Dumping Tool
 
 ## What is this?
 OpenDumpy is an open-source Gameboy and Gameboy Color cartridge dumper.
@@ -67,6 +67,8 @@ Press the BOOTSEL button on OpenDumpy, then plug into USB port of machine. It wi
 ## Images
 
 ### OpenDumpy v1
-![OpenDumpy v1 Render](docs/imgs/opendumpy-v1-render.png)
-![OpenDumpy v1 Footprint](docs/imgs/opendumpy-v1-footprint.png)
-![OpenDumpy v1 Schematic](docs/imgs/opendumpy-v1-schematic.png)
+<div>
+<img src=docs/imgs/opendumpy-v1-render.png width=50%>
+<img src=docs/imgs/opendumpy-v1-footprint.png width=50%>
+<img src=docs/imgs/opendumpy-v1-schematic.png width=50%>
+</div>
