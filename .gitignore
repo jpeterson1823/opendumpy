@@ -1,4 +1,9 @@
-/kicad/c-rp2350 opendumpy/custom_rp2350-backups
-/kicad/c-rp2350 opendumpy/gerber
-kicad/c-rp2350 opendumpy/custom_rp2350.kicad_prl
-kicad/c-rp2350 opendumpy/custom_rp2350.kicad_pro
+# Exclude KICAD Backups and Gerber files
+kicad/c-rp2350 opendumpy/custom_rp2350-backups
+kicad/c-rp2350 opendumpy/gerber
+
+# Exclude all build files
+firmware/build
+
+# Exclude pico-sdk dir
+firmware/libs/pico-sdk
