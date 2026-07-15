@@ -19,6 +19,9 @@ pico_sdk_init()
 add_executable(opendumpy)
 target_sources(opendumpy PRIVATE
     opendumpy.c
+    src/gbxcart.c
+    src/gblib.c
+    src/gbclib.c
 )
 target_include_directories(opendumpy PRIVATE
     ./include
