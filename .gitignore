@@ -1,6 +1,7 @@
 # Exclude KICAD Backups and Gerber files
 kicad/c-rp2350 opendumpy/custom_rp2350-backups
 kicad/c-rp2350 opendumpy/gerber
+kicad/c-rp2350 opendumpy/.history
 
 # Exclude all build files
 firmware/build

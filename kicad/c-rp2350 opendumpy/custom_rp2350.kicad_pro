@@ -28,8 +28,8 @@
         },
         "fab_line_width": 0.1,
         "fab_text_italic": false,
-        "fab_text_size_h": 1.0,
-        "fab_text_size_v": 1.0,
+        "fab_text_size_h": 0.8,
+        "fab_text_size_v": 0.8,
         "fab_text_thickness": 0.15,
         "fab_text_upright": false,
         "other_line_width": 0.1,
@@ -39,14 +39,14 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.8,
-          "height": 1.27,
-          "width": 2.54
+          "drill": 0.0,
+          "height": 51.0,
+          "width": 51.0
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
-        "silk_text_size_h": 1.0,
-        "silk_text_size_v": 1.0,
+        "silk_text_size_h": 0.8,
+        "silk_text_size_v": 0.8,
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
@@ -212,7 +212,7 @@
       "track_widths": [
         0.0,
         0.1,
-        0.15
+        0.4
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -255,7 +255,7 @@
       "internal_id": "",
       "mfg": "",
       "mpn": "",
-      "sch_revision": ""
+      "sch_revision": "v3.0"
     },
     "layer_pairs": [],
     "layer_presets": [],
@@ -541,6 +541,7 @@
       "netlist": "",
       "plot": "gerber/",
       "specctra_dsn": "",
+      "step": "",
       "vrml": ""
     },
     "page_layout_descr_file": ""
@@ -651,6 +652,14 @@
     "meta": {
       "version": 1
     },
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 4,
+      "workbook_filename": ""
+    },
     "page_layout_descr_file": "",
     "plot_directory": "",
     "reuse_designators": true,
@@ -663,7 +672,7 @@
         "uuid": "8498c10a-071a-4c91-b808-36d4b4f98468"
       }
     ],
-    "used_designators": "#PWR39",
+    "used_designators": "RV1,SW3,Q1-2,U5-9,U11-28,J2-4,R3,R5,R11-27,TP1-5,L1,C7,C9,C19,C22,#PWR3,#PWR23-24,#PWR28-78,#PWR80-86",
     "variants": []
   },
   "sheets": [
