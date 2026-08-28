@@ -4,18 +4,26 @@
 OpenDumpy is an open-source Gameboy and Gameboy Color cartridge dumper.
 
 Planned Features:
+- LCD Display Screen
+- MicroSD Card Support
+- Capacitive Touch Controls
 - ROM Dump
+  - Save direct to computer over USB via use of software
+  - Save to MicroSD card through on-board UI
 - SRAM Dump
+  - Save direct to computer over USB via use of software
+  - Save to MicroSD card through on-board UI
 - SRAM Uploading from file
-- Custom Open-Source USB Communication protocol
-  - Will have FOSS software interface included in this repo.
+  - Direct from computer over USB via use of software
+  - Load from MicroSD card through on-board UI
 - Lots of docs!
 
 ## Current Fabrication Status Status
 
-OpenDumpy v1 boards are on order with PCBWay, expected by the middle of July 2026.
+OpenDumpy v3 has finished design and is being checked thoroughly for any design errors.
+Ordering of components and PCBs will be completed early September 2026.
 
-Firmware design is in progress. Actual programming to come soon.
+OpenDumpy v3 will include development pinouts accessible via IDC connectors on the right side of the board in the event of an uncaught error in PCB/Schematic design. This will allow for the continued development of firmware without needing to have a fixed board this time around.
 
 ## Setup & Building the UF2
 
@@ -66,9 +74,18 @@ Press the BOOTSEL button on OpenDumpy, then plug into USB port of machine. It wi
 
 ## Images
 
-### OpenDumpy v1
+### OpenDumpy v3
 <div>
-<img src=docs/imgs/opendumpy-v1-render.png width=50%>
-<img src=docs/imgs/opendumpy-v1-footprint.png width=50%>
-<img src=docs/imgs/opendumpy-v1-schematic.png width=50%>
+<img src=docs/imgs/v3/schematic.png width=100%>
+<img src=docs/imgs/v3/footprint.png width=100%>
+<img src=docs/imgs/v3/pcb-front.png width=100%>
+<img src=docs/imgs/v3/pcb-back.png width=100%>
+</div>
+
+
+### OpenDumpy v1-2
+<div>
+<img src=docs/imgs/v1-2/opendumpy-v1-render.png width=50%>
+<img src=docs/imgs/v1-2/opendumpy-v1-footprint.png width=50%>
+<img src=docs/imgs/v1-2/opendumpy-v1-schematic.png width=50%>
 </div>
