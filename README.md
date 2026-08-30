@@ -1,6 +1,5 @@
 # OpenDumpy: GB/C Dumping Tool
 
-## What is this?
 OpenDumpy is an open-source Gameboy and Gameboy Color cartridge dumper.
 
 Planned Features:
@@ -17,6 +16,8 @@ Planned Features:
   - Direct from computer over USB via use of software
   - Load from MicroSD card through on-board UI
 - Lots of docs!
+
+Future versions of OpenDumpy will have a modular cartridge port to support NES, SNES, N64, as well as GB(A) games.
 
 ## Current Fabrication Status Status
 
