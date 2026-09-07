@@ -1,0 +1,23 @@
+[package]
+name = "rust-opendumpy"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rp235x-hal = { version = "0.4.0", features = ["critical-section-impl", "rt"] }
+rp235x-pac = "0.2.0"
+embedded-hal = "1.0.0"
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.6"
+usb-device = "0.3.2"
+usbd-serial = "0.2.2"
+heapless = "0.9.3"
+critical-section = "1.2.0"
+
+[profile.dev]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true

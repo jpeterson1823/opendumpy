@@ -4,7 +4,5 @@ kicad/c-rp2350 opendumpy/gerber
 kicad/c-rp2350 opendumpy/.history
 
 # Exclude all build files
-firmware/build
+firmware/c-opendumpy/build
 
-# Exclude pico-sdk dir
-firmware/libs/pico-sdk

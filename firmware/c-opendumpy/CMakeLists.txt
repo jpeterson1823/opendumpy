@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.13)
 # Pico Settings
 set(PICO_PLATFORM "rp2350")
 set(PICO_BOARD "none")
-include(./include/pico-sdk/pico_sdk_init.cmake)
+include(../pico-sdk/pico_sdk_init.cmake)
 
 # C Settings
 set(CMAKE_C_STANDARD 23)
@@ -35,7 +35,7 @@ target_link_libraries(opendumpy PRIVATE
 
 # More Pico Settings
 pico_set_program_name(opendumpy "OpenDumpy")
-pico_set_program_version(opendumpy "1.0")
+pico_set_program_version(opendumpy "0.1a")
 pico_enable_stdio_uart(opendumpy 0)
 pico_enable_stdio_usb(opendumpy 1)
 pico_add_extra_outputs(opendumpy)
