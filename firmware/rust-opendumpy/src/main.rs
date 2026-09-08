@@ -4,6 +4,8 @@
 #![allow(unused)]
 
 mod gbcart;
+mod hardware;
+use hardware as hw;
 
 use core::panic::PanicInfo;
 use core::cell::RefCell;
@@ -29,30 +31,26 @@ pub static IMAGE_DEF: hal::block::ImageDef = hal::block::ImageDef::secure_exe();
 const XOSC_CRYSTAL_FREQ: u32 = 12_000_000;
 
 // create resources struct
-pub struct HwRes {
-    sio: Mutex<RefCell<Option<pac::SIO>>>,
-    pac_resets: Mutex<RefCell<Option<pac::RESETS>>>,
-    pac_io_bank0: Mutex<RefCell<Option<pac::IO_BANK0>>>,
-    pac_pads_bank0: Mutex<RefCell<Option<pac::PADS_BANK0>>>
-}
+//pub struct HwRes {
+//    sio: Mutex<RefCell<Option<pac::SIO>>>,
+//    pac_resets: Mutex<RefCell<Option<pac::RESETS>>>,
+//    pac_io_bank0: Mutex<RefCell<Option<pac::IO_BANK0>>>,
+//    pac_pads_bank0: Mutex<RefCell<Option<pac::PADS_BANK0>>>
+//}
 
 // create pac::SIO mutex
-
-static HWRES: HwRes = HwRes {
-    sio           : Mutex::new(RefCell::new(None)),
-    pac_resets    : Mutex::new(RefCell::new(None)),
-    pac_io_bank0  : Mutex::new(RefCell::new(None)),
-    pac_pads_bank0: Mutex::new(RefCell::new(None))
-};
+//static HWRES: HwRes = HwRes {
+//    sio           : Mutex::new(RefCell::new(None)),
+//    pac_resets    : Mutex::new(RefCell::new(None)),
+//    pac_io_bank0  : Mutex::new(RefCell::new(None)),
+//    pac_pads_bank0: Mutex::new(RefCell::new(None))
+//};
 
 // Main entrypoint
 #[hal::entry]
 unsafe fn main() -> ! {
     // grab peripherals singleton
     let mut pac_singleton = hal::pac::Peripherals::take().unwrap();
-
-    // set PAC_SIO_MUTEX
-    critical_section::with(|cs| HWRES.sio.borrow(cs).replace(Some(pac_singleton.SIO)));
 
     // configure watchdog and clock
     let mut watchdog = hal::Watchdog::new(pac_singleton.WATCHDOG);
@@ -92,6 +90,15 @@ unsafe fn main() -> ! {
         .unwrap()
         .device_class(2)
         .build();
+
+    // fill hardware resources before gpio stuffs
+    critical_section::with(|cs| {
+        hw::RES.sio.borrow(cs).replace(Some(pac_singleton.SIO));
+        hw::RES.pac_resets.borrow(cs).replace(Some(pac_singleton.RESETS));
+        hw::RES.pac_io_bank0.borrow(cs).replace(Some(pac_singleton.IO_BANK0));
+        hw::RES.pac_pads_bank0.borrow(cs).replace(Some(pac_singleton.PADS_BANK0));
+        hw::RES.io_state.borrow(cs).replace(Some(hw::IOState::new()));
+    });
 
     // attempt gameboy setup
     let _ = serial.write(b"Attempting gbcart::init()...\r\n");
