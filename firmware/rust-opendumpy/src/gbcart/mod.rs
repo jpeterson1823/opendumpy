@@ -1,5 +1,7 @@
 #![allow(unused)]
 
+pub mod data;
+
 use core::panic;
 use critical_section::Mutex;
 use core::sync::atomic::AtomicPtr;
