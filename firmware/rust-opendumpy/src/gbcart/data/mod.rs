@@ -1,5 +1,6 @@
-// represents a block of memory with a starting address and a size in Bytes
+mod licensee_codes;
 
+// represents a block of memory with a starting address and a size in Bytes
 pub struct Block<T> {
     addr: T,
     size: usize,
@@ -16,6 +17,9 @@ where
 
 
 mod header {
+    use heapless::string::String;
+    use heapless::vec::Vec;
+    use super::licensee_codes;
     use super::Block;
 
     mod field {
@@ -37,6 +41,8 @@ mod header {
         pub const MASK_ROM_VERSION : Block<u16> = Block::new(0x014C, 1usize);
         pub const HEADER_CHECKSUM  : Block<u16> = Block::new(0x014D, 1usize);
         pub const GLOBAL_CHECKSUM  : Block<u16> = Block::new(0x014E, 2usize);
+
+        pub const VALID_ASCII_RANGE: core::ops::Range<u8> =  0x20..0x61;
     }
 
     pub struct GBHeader {
@@ -128,7 +134,7 @@ mod header {
             Self {
                 entry_point,
                 nintendo_logo,
-                title,   
+                title,
                 manufacturer_code,
                 cgb_flag,
                 new_licensee_code,
@@ -144,6 +150,31 @@ mod header {
             }
 
         }
+
+        pub fn has_cbg_support(&self) -> bool {
+            // for more info: https://gbdev.io/pandocs/The_Cartridge_Header.html
+            self.cgb_flag[0] == 0x80 || self.cgb_flag[0] == 0xC0
+        }
+
+        pub fn get_title(&self) -> String<{field::TITLE.size}> {
+            let vec: Vec<u8, {field::TITLE.size}> = Vec::from_slice(self.title.as_slice()).unwrap();
+            match String::from_utf8(vec) {
+                Ok(str) => str,
+                Err(error) => {
+                    defmt::error!("GBHeader::get_title(&self): Failed to turn title bytes into characters.");
+                    defmt::panic!();
+                }
+            }
+        }
+
+        pub fn get_new_licensee_name(&self) -> &str {
+            licensee_codes::lookup(&self.new_licensee_code)
+        }
+
+        pub fn has_sgb_support(&self) -> bool {
+            self.sgb_flag[0] == 0x03
+        }
+
     }
 }
 

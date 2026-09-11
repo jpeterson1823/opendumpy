@@ -2,21 +2,19 @@
 
 pub mod data;
 
-use core::panic;
 use critical_section::Mutex;
 use core::sync::atomic::AtomicPtr;
 use core::mem::MaybeUninit;
 use rp235x_pac as pac;
 
+// logging imports
+use defmt::*;
+use defmt_rtt as _;
+use panic_probe as _;
+
 // pull hardware resources into this file
 use super::hardware as hw;
 
-
-// set module global dbus mode var to default: write
-//static DBUS_MODE: hw::BusMode = hw::BusMode::WRITE;
-
-// set module global cbus state var to disabled (false)
-//static CBUS_STATE: bool = false;
 
 // Represents GPIO[28:0] and GPIO[41]
 const IO_MASK_LO  : u32 = 0x1fff_ffff;
@@ -32,17 +30,20 @@ const CBUS_EN_MASK: u32 = 0x0000_0200;
 const DBUS_BIT_SHIFT: u8 = 19;
 
 
+// Initialize the GameBoy cartridge bus
 pub fn init() {
+    info!("Initializing GameBoy cartridge bus...");
+
     // function select value for SIO gpio function
     const FUNCSEL_SIO: u8 = 5;
 
     // enter critical section to use hardware resources
     critical_section::with(|cs| {
         // take necessary hardware resources
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
-        let resets = hw::RES.pac_resets.borrow_ref_mut(cs).take().unwrap();
-        let pads_bank0 = hw::RES.pac_pads_bank0.borrow_ref_mut(cs).take().unwrap();
-        let io_bank0 = hw::RES.pac_io_bank0.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
+        let resets = hw::take_resets!(cs);
+        let pads_bank0 = hw::take_pads_bank0!(cs);
+        let io_bank0 = hw::take_io_bank0!(cs);
 
         // take the IO mux and the pad bank out of reset
         resets.reset().modify(|_, w| {
@@ -97,10 +98,10 @@ pub fn init() {
         pads_bank0.gpio(41usize).modify(|_,w| w.iso().clear_bit());
 
         // hardware resources no longer needed. release mutexes
-        hw::RES.sio.borrow(cs).replace(Some(sio));
-        hw::RES.pac_resets.borrow(cs).replace(Some(resets));
-        hw::RES.pac_pads_bank0.borrow(cs).replace(Some(pads_bank0));
-        hw::RES.pac_io_bank0.borrow(cs).replace(Some(io_bank0));
+        hw::return_sio!(cs, sio);
+        hw::return_resets!(cs, resets);
+        hw::return_io_bank0!(cs, io_bank0);
+        hw::return_pads_bank0!(cs, pads_bank0);
     });
 }
 
@@ -108,18 +109,18 @@ fn set_dbus(mode: hw::BusMode) {
     // enter critical section
     critical_section::with(|cs| {
         // take io_state from hw::RES
-        let mut io_state = hw::RES.io_state.borrow_ref_mut(cs).take().unwrap();
+        let mut io_state = hw::take_io_state!(cs);
 
         // if bus already in requested mode, do nothing and return
         if io_state.dbus == mode {
             // return io_state to hw::RES
-            hw::RES.io_state.borrow(cs).replace(Some(io_state));
+            hw::return_io_state!(cs, io_state);
             return
         }
 
         // take SIO & pads_bank0 from mutex
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
-        let pads_bank0 = hw::RES.pac_pads_bank0.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
+        let pads_bank0 = hw::take_pads_bank0!(cs);
 
         // affect change on bus
         match mode {
@@ -168,9 +169,9 @@ fn set_dbus(mode: hw::BusMode) {
         };
 
         // return hardware resources
-        hw::RES.sio.borrow(cs).replace(Some(sio));
-        hw::RES.pac_pads_bank0.borrow(cs).replace(Some(pads_bank0));
-        hw::RES.io_state.borrow(cs).replace(Some(io_state));
+        hw::return_sio!(cs, sio);
+        hw::return_pads_bank0!(cs, pads_bank0);
+        hw::return_io_state!(cs, io_state);
     });
 }
 
@@ -215,11 +216,11 @@ pub fn read(addr: u32) -> u8 {
     // enter critical section
     critical_section::with(|cs| {
         // Take SIO from hw::RES
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
         // read pins
         byte = self::sio_read(&sio, addr);
         // return SIO to hw::RES
-        hw::RES.sio.borrow(cs).replace(Some(sio));
+        hw::return_sio!(cs, sio);
     });
 
     // return byte var
@@ -231,7 +232,7 @@ pub fn read_bytes(addr: u32, buffer: &mut [u8]) {
     // enter critical section
     critical_section::with(|cs| {
         // take SIO from hw::RES
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
 
         // read each byte and store in buffer
         for (n, byte) in buffer.iter_mut().enumerate() {
@@ -239,7 +240,7 @@ pub fn read_bytes(addr: u32, buffer: &mut [u8]) {
         }
 
         // return SIO to hw::RES
-        hw::RES.sio.borrow(cs).replace(Some(sio));
+        hw::return_sio!(cs, sio);
     });
 }
 
@@ -248,13 +249,13 @@ pub fn write(addr: u32, byte: u8) {
     // enter critical section
     critical_section::with(|cs| {
         // take SIO from hw::RES
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
 
         // write byte
         self::sio_write(&sio, addr, byte);
 
         // return SIO to hw::RES
-        hw::RES.sio.borrow(cs).replace(Some(sio));
+        hw::return_sio!(cs, sio);
     });
 }
 
@@ -263,7 +264,7 @@ pub fn write_bytes(addr: u32, bytes: &[u8]) {
     // enter critical section
     critical_section::with(|cs| {
         // take SIO from hw::RES
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
 
         // write each byte to specified addr
         for (n, byte) in bytes.iter().enumerate() {
@@ -271,7 +272,7 @@ pub fn write_bytes(addr: u32, bytes: &[u8]) {
         }
 
         // return SIO to hw::RES
-        hw::RES.sio.borrow(cs).replace(Some(sio));
+        hw::return_sio!(cs, sio);
     });
 }
 
@@ -279,16 +280,16 @@ pub fn cbus_enable() {
     // enter critical section
     critical_section::with(|cs| {
         // grap io_state from hw::RES
-        let mut io_state = hw::RES.io_state.borrow_ref_mut(cs).take().unwrap();
+        let mut io_state = hw::take_io_state!(cs);
         // if cbus already enabled, do nothing and return
         if io_state.cbus == hw::IOMode::ENABLED {
             // return io_state to hw::RES
-            hw::RES.io_state.borrow(cs).replace(Some(io_state));
+            hw::return_io_state!(cs, io_state);
             return
         }
 
         // take SIO from hw::RES
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
         // set GPIO41
         sio.gpio_hi_out_set().write(|w| unsafe { w.bits(CBUS_EN_MASK) });
 
@@ -296,8 +297,8 @@ pub fn cbus_enable() {
         io_state.cbus = hw::IOMode::ENABLED;
 
         // return resources to hw::RES
-        hw::RES.sio.borrow(cs).replace(Some(sio));
-        hw::RES.io_state.borrow(cs).replace(Some(io_state));
+        hw::return_sio!(cs, sio);
+        hw::return_io_state!(cs, io_state);
     });
 }
 
@@ -305,16 +306,16 @@ pub fn cbus_disable() {
     // enter critical section
     critical_section::with(|cs| {
         // grap io_state from hw::RES
-        let mut io_state = hw::RES.io_state.borrow_ref_mut(cs).take().unwrap();
+        let mut io_state = hw::take_io_state!(cs);
         // if cbus already disabled, do nothing and return
         if io_state.cbus == hw::IOMode::DISABLED {
             // return io_state to hw::RES
-            hw::RES.io_state.borrow(cs).replace(Some(io_state));
+            hw::return_io_state!(cs, io_state);
             return
         }
 
         // take SIO from hw::RES
-        let sio = hw::RES.sio.borrow_ref_mut(cs).take().unwrap();
+        let sio = hw::take_sio!(cs);
         // clr GPIO41
         sio.gpio_hi_out_clr().write(|w| unsafe { w.bits(CBUS_EN_MASK) });
 
@@ -322,7 +323,7 @@ pub fn cbus_disable() {
         io_state.cbus = hw::IOMode::DISABLED;
 
         // return resources to hw::RES
-        hw::RES.sio.borrow(cs).replace(Some(sio));
-        hw::RES.io_state.borrow(cs).replace(Some(io_state));
+        hw::return_sio!(cs, sio);
+        hw::return_io_state!(cs, io_state);
     });
 }

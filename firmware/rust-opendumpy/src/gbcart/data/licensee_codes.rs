@@ -1,0 +1,76 @@
+use heapless::String;
+
+const CODE_DICT: [(&[u8;2], &str); 63] = [
+    (b"00", "None"                                ),
+    (b"01", "Nintendo Research & Development 1"   ),
+    (b"08", "Capcom"                              ),
+    (b"13", "EA (Electronic Arts)"                ),
+    (b"18", "Hudson Soft 0x19B-AI"                ),
+    (b"20", "KSS"                                 ),
+    (b"22", "Planning Office WADA"                ),
+    (b"24", "PCM Complete"                        ),
+    (b"25", "San-X"                               ),
+    (b"28", "Kemco"                               ),
+    (b"29", "SETA Corporation"                    ),
+    (b"30", "Viacom"                              ),
+    (b"31", "Nintendo"                            ),
+    (b"32", "Bandai"                              ),
+    (b"33", "Ocean Software/Acclaim Entertainment"),
+    (b"34", "Konami"                              ),
+    (b"35", "HectorSoft"                          ),
+    (b"37", "Taito"                               ),
+    (b"38", "Hudson Soft"                         ),
+    (b"39", "Banpresto"                           ),
+    (b"41", "Ubi Soft1"                           ),
+    (b"42", "Atlus"                               ),
+    (b"44", "Malibu Interactive"                  ),
+    (b"46", "Angel"                               ),
+    (b"47", "Bullet-Proof Software2"              ),
+    (b"49", "Irem"                                ),
+    (b"50", "Absolute"                            ),
+    (b"51", "Acclaim Entertainment"               ),
+    (b"52", "Activision"                          ),
+    (b"53", "Sammy USA Corporation"               ),
+    (b"54", "Konami"                              ),
+    (b"55", "Hi Tech Expressions"                 ),
+    (b"56", "LJN"                                 ),
+    (b"57", "Matchbox"                            ),
+    (b"58", "Mattel"                              ),
+    (b"59", "Milton Bradley Company"              ),
+    (b"60", "Titus Interactive"                   ),
+    (b"61", "Virgin Games Ltd.3"                  ),
+    (b"64", "Lucasfilm Games4"                    ),
+    (b"67", "Ocean Software"                      ),
+    (b"69", "EA (Electronic Arts)"                ),
+    (b"70", "Infogrames5"                         ),
+    (b"71", "Interplay Entertainment"             ),
+    (b"72", "Broderbund"                          ),
+    (b"73", "Sculptured Software6"                ),
+    (b"75", "The Sales Curve Limited7"            ),
+    (b"78", "THQ"                                 ),
+    (b"79", "Accolade8"                           ),
+    (b"80", "Misawa Entertainment"                ),
+    (b"83", "LOZC G."                             ),
+    (b"86", "Tokuma Shoten"                       ),
+    (b"87", "Tsukuda Original"                    ),
+    (b"91", "Chunsoft Co.9"                       ),
+    (b"92", "Video System"                        ),
+    (b"93", "Ocean Software/Acclaim Entertainment"),
+    (b"95", "Varie"                               ),
+    (b"96", "Yonezawa10/S’Pal"                    ),
+    (b"97", "Kaneko"                              ),
+    (b"99", "Pack-In-Video"                       ),
+    (b"9H", "Bottom Up"                           ),
+    (b"A4", "Konami (Yu-Gi-Oh!)"                  ),
+    (b"BL", "MTO"                                 ),
+    (b"DK", "Kodansha"                            )
+];
+
+pub fn lookup(code: &[u8;2]) -> &str {
+    for dict_code in CODE_DICT.iter() {
+        if code[0] == dict_code.1.chars().nth(0).unwrap() as u8 && code[1] == dict_code.1.chars().nth(1).unwrap() as u8 {
+            return dict_code.1
+        }
+    }
+    return CODE_DICT[0].1
+}

@@ -4,5 +4,5 @@ kicad/c-rp2350 opendumpy/gerber
 kicad/c-rp2350 opendumpy/.history
 
 # Exclude all build files
-firmware/c-opendumpy/build
+**/build/
 
