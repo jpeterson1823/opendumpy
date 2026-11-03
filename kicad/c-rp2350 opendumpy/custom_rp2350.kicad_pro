@@ -64,7 +64,7 @@
           "min_island_area": 10.0,
           "min_thickness": 0.1,
           "pad_connection": 2,
-          "remove_islands": 0,
+          "remove_islands": 1,
           "thermal_relief_gap": 0.5,
           "thermal_relief_spoke_width": 0.5
         }
@@ -178,6 +178,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -189,6 +190,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -200,6 +202,7 @@
         {
           "td_allow_use_two_tracks": true,
           "td_curve_segcount": 0,
+          "td_enabled": false,
           "td_height_ratio": 1.0,
           "td_length_ratio": 0.5,
           "td_maxheight": 2.0,
@@ -484,6 +487,7 @@
       "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
+      "same_local_global_power": "warning",
       "similar_label_and_power": "warning",
       "similar_labels": "warning",
       "similar_power": "warning",
@@ -531,8 +535,8 @@
     "meta": {
       "version": 5
     },
-    "net_colors": null,
-    "netclass_assignments": null,
+    "net_colors": {},
+    "netclass_assignments": {},
     "netclass_patterns": []
   },
   "pcbnew": {
@@ -672,13 +676,29 @@
         "uuid": "8498c10a-071a-4c91-b808-36d4b4f98468"
       }
     ],
-    "used_designators": "RV1,SW3,Q1-2,U5-9,U11-28,J2-4,R3,R5,R11-27,TP1-5,L1,C7,C9,C19,C22,#PWR3,#PWR23-24,#PWR28-78,#PWR80-86",
+    "used_designators": "#PWR1-25,#PWR27-78,#PWR80-86,C1-22,J1-4,L1,Q1-2,R1-27,RV1,SW1-3,TP1-5,U1-28,Y1",
     "variants": []
   },
   "sheets": [
     [
       "8498c10a-071a-4c91-b808-36d4b4f98468",
       "Root"
+    ],
+    [
+      "2f44a830-c251-46b5-bb09-65877077e3d8",
+      "MicroSD"
+    ],
+    [
+      "c2bba292-e4e7-4e7d-ba09-562ae8aaa991",
+      "DevPinout"
+    ],
+    [
+      "88b1f04b-bf2c-45cb-92bb-b00ac0e28800",
+      "LCD"
+    ],
+    [
+      "81bcdbdc-bd5e-4513-b62b-7610feb0faf8",
+      "GameboyCartPort"
     ]
   ],
   "text_variables": {},

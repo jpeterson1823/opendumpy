@@ -1,0 +1,7 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "CapacitiveTouch") (type "KiCad") (uri "C:/Users/john.peterson/Documents/GitHub/opendumpy/kicad/libs/CapacitiveTouch.kicad_sym") (options "") (descr ""))
+	(lib (name "owned_parts") (type "KiCad") (uri "C:/Users/john.peterson/Documents/GitHub/opendumpy/kicad/libs/owned_parts.kicad_sym") (options "") (descr ""))
+	(lib (name "molex-5033981892") (type "KiCad") (uri "C:/Users/john.peterson/Documents/GitHub/opendumpy/kicad/libs/molex-5033981892/5033981892.kicad_sym") (options "") (descr ""))
+	(lib (name "Gameboy") (type "Legacy") (uri "C:/Users/john.peterson/Documents/GitHub/opendumpy/kicad/libs/Game-Boy-KiCad-Library/Symbols/Gameboy.lib") (options "") (descr ""))
+)

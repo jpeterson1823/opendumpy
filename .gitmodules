@@ -1,3 +1,6 @@
 [submodule "firmware/pico-sdk"]
 	path = firmware/pico-sdk
 	url = https://github.com/raspberrypi/pico-sdk.git
+[submodule "kicad/libs/Game-Boy-KiCad-Library"]
+	path = kicad/libs/Game-Boy-KiCad-Library
+	url = https://github.com/HDR/Game-Boy-KiCad-Library.git
