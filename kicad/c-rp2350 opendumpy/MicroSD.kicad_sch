@@ -2886,6 +2886,16 @@
 		)
 		(uuid "fcf317fc-18c8-46a4-bf92-8d72c0a58cd9")
 	)
+	(label "uSD5"
+		(at 71.12 102.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "02fc1362-73be-4a82-9612-06a6d308d9ca")
+	)
 	(label "GPIO40"
 		(at 172.72 73.66 180)
 		(effects
@@ -2895,6 +2905,16 @@
 			(justify right bottom)
 		)
 		(uuid "178ba581-63fc-482a-91e3-8117f224d20c")
+	)
+	(label "uSD0"
+		(at 71.12 90.17 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1e353db3-1dd9-4b0e-ab95-c8f6cc3f9d15")
 	)
 	(label "GPIO34"
 		(at 146.05 100.33 180)
@@ -2906,47 +2926,27 @@
 		)
 		(uuid "2545c96a-30fe-4b72-a2c6-03fec9a11dc8")
 	)
-	(label "uSD_0"
-		(at 71.12 90.17 0)
+	(label "uSD3"
+		(at 71.12 97.79 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "26723d39-2933-4392-a2b5-00d8126fd19a")
+		(uuid "286b5937-90ac-4ce7-83cf-ca064c6b92a1")
 	)
-	(label "uSD_7"
-		(at 71.12 107.95 0)
+	(label "uSD1"
+		(at 71.12 92.71 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "500ec362-07c1-4650-a1ee-5f0b644a96cf")
+		(uuid "648935f6-bbfa-406f-82d6-a0e7c37acb17")
 	)
-	(label "uSD_4"
-		(at 71.12 100.33 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5c41e885-479e-4211-9885-d8d0116fe70b")
-	)
-	(label "uSD_5"
-		(at 71.12 102.87 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "697b2aeb-3360-479f-892a-a35f592e9863")
-	)
-	(label "uSD_8"
+	(label "uSD8"
 		(at 71.12 110.49 0)
 		(effects
 			(font
@@ -2954,7 +2954,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6e4fefec-2e02-435f-aad2-8b89e20a86a8")
+		(uuid "73055ae2-4ba6-4c6d-ba28-73c7bb733aee")
 	)
 	(label "GPIO38"
 		(at 146.05 90.17 180)
@@ -2966,7 +2966,7 @@
 		)
 		(uuid "7a0c9b0e-7d78-48b9-9275-093a56431ad9")
 	)
-	(label "uSD_2"
+	(label "uSD2"
 		(at 71.12 95.25 0)
 		(effects
 			(font
@@ -2974,7 +2974,17 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "8449a130-d481-4ce9-9bb6-08a78d3dbaa2")
+		(uuid "7baa5d96-7209-49eb-88a5-13bdff3d58a4")
+	)
+	(label "uSD9"
+		(at 71.12 113.03 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8b063a8b-0d5e-44c2-8ace-5850ddec07e7")
 	)
 	(label "GPIO29"
 		(at 146.05 144.78 180)
@@ -2986,15 +2996,15 @@
 		)
 		(uuid "8ba964eb-c67d-4f33-92fe-7cbdc9601480")
 	)
-	(label "uSD_9"
-		(at 71.12 113.03 0)
+	(label "uSD7"
+		(at 71.12 107.95 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "9735ce81-e4ae-4f67-9c87-ecfc9ffff541")
+		(uuid "91e9dbb6-4445-4d0a-939b-5b39b5f01da7")
 	)
 	(label "GPIO30"
 		(at 146.05 142.24 180)
@@ -3005,6 +3015,16 @@
 			(justify right bottom)
 		)
 		(uuid "98639db6-a9a6-4d50-af87-ed6e8813f6e5")
+	)
+	(label "uSD4"
+		(at 71.12 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9a3e8816-97fc-479f-a3ee-8f897dddc318")
 	)
 	(label "GPIO32"
 		(at 146.05 105.41 180)
@@ -3036,16 +3056,6 @@
 		)
 		(uuid "a4d89a86-46ad-4283-9d84-02d75f0086ea")
 	)
-	(label "uSD_3"
-		(at 71.12 97.79 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "aeb10395-f08e-40ee-a5ee-1ba7872da032")
-	)
 	(label "GPIO37"
 		(at 146.05 92.71 180)
 		(effects
@@ -3066,17 +3076,7 @@
 		)
 		(uuid "c169dccc-2e43-4bd0-a992-b83b9159a96c")
 	)
-	(label "uSD_1"
-		(at 71.12 92.71 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c46233fe-8a8f-44c7-8e69-7d9b0a24587f")
-	)
-	(label "uSD_6"
+	(label "uSD6"
 		(at 71.12 105.41 0)
 		(effects
 			(font
@@ -3084,7 +3084,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "dcf4119b-4555-469a-96b2-1b0a5fbcd27b")
+		(uuid "ceaaa35c-3215-4a8f-bfbf-31420c8c99e6")
 	)
 	(label "GPIO33"
 		(at 146.05 102.87 180)
@@ -3097,7 +3097,7 @@
 		(uuid "f1182648-7f65-4e06-87fc-82476f4c5b72")
 	)
 	(hierarchical_label "uSD[0..9]"
-		(shape output)
+		(shape bidirectional)
 		(at 78.74 86.36 180)
 		(effects
 			(font

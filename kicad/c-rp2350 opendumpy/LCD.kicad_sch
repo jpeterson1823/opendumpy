@@ -2780,6 +2780,16 @@
 		)
 		(uuid "0eadb5ee-404d-47d1-8197-67960f6d13b6")
 	)
+	(bus
+		(pts
+			(xy 215.9 217.17) (xy 209.55 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1224749c-f468-4907-a7ab-74895235cd37")
+	)
 	(wire
 		(pts
 			(xy 104.14 73.66) (xy 104.14 107.95)
@@ -3250,6 +3260,16 @@
 		)
 		(uuid "8b7c3c3b-0012-4d2a-9280-562a0f9d93ff")
 	)
+	(bus
+		(pts
+			(xy 215.9 160.02) (xy 215.9 217.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92ab7021-5182-4c0c-a691-983418fc9e56")
+	)
 	(wire
 		(pts
 			(xy 219.71 100.33) (xy 218.44 100.33)
@@ -3490,6 +3510,16 @@
 		)
 		(uuid "df1acf39-3b68-496b-8ad3-60808648cfb2")
 	)
+	(bus
+		(pts
+			(xy 209.55 160.02) (xy 215.9 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df691dc6-a4dd-420e-a1b5-fbfe3af5c689")
+	)
 	(wire
 		(pts
 			(xy 222.25 77.47) (xy 226.06 77.47)
@@ -3690,6 +3720,16 @@
 		)
 		(uuid "29c87653-aec9-4ff3-89ec-9287b3c42b0c")
 	)
+	(label "LCD3"
+		(at 195.58 85.09 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2ec63aff-df18-4366-bf68-a4d37bcf43be")
+	)
 	(label "GPIO29"
 		(at 105.41 124.46 0)
 		(effects
@@ -3700,15 +3740,15 @@
 		)
 		(uuid "3515735b-8bcf-4b0d-a7d9-323bd50bb95b")
 	)
-	(label "LCD_00"
-		(at 195.58 76.2 180)
+	(label "LCD2"
+		(at 195.58 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "3c38b611-a9c7-41c6-9ba3-13cb8f2dc2e8")
+		(uuid "3ac5bb94-4c03-4169-ac52-a645606799fa")
 	)
 	(label "GPIO40"
 		(at 43.18 59.69 0)
@@ -3719,16 +3759,6 @@
 			(justify left bottom)
 		)
 		(uuid "3fe37fff-1859-414e-8500-30c170d1a570")
-	)
-	(label "LCD_06"
-		(at 195.58 92.71 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "5e6e618d-abe7-43b3-b876-c9d8cc82f8d2")
 	)
 	(label "GPIO39"
 		(at 105.41 76.2 0)
@@ -3749,6 +3779,16 @@
 			(justify left bottom)
 		)
 		(uuid "6302bd20-66de-4154-94cd-97d4a153cc18")
+	)
+	(label "LCD10"
+		(at 195.58 102.87 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "66a49ed6-43bd-434b-a648-6e5bd00e6811")
 	)
 	(label "GPIO33"
 		(at 105.41 91.44 0)
@@ -3780,37 +3820,7 @@
 		)
 		(uuid "796dbe44-6595-4dbc-b2e1-4b76eeee8803")
 	)
-	(label "LCD_09"
-		(at 195.58 100.33 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7a6d2f29-d59c-4173-b505-ed7348a57ac6")
-	)
-	(label "LCD_03"
-		(at 195.58 85.09 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "8c1b723c-9919-463d-a2e9-bf7ae7f747bf")
-	)
-	(label "LCD_02"
-		(at 195.58 81.28 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "982977e0-3d58-48e2-8dcc-be8c3ec55e89")
-	)
-	(label "LCD_08"
+	(label "LCD8"
 		(at 195.58 97.79 180)
 		(effects
 			(font
@@ -3818,19 +3828,9 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "98ea6389-6cdc-40f5-8c64-281571d41528")
+		(uuid "8d179eb9-1261-41af-80b8-77bfa3a5cae2")
 	)
-	(label "LCD_07"
-		(at 195.58 95.25 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9d896711-ccfb-4dc0-9569-cc190ef4c497")
-	)
-	(label "LCD_04"
+	(label "LCD4"
 		(at 195.58 87.63 180)
 		(effects
 			(font
@@ -3838,9 +3838,9 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "9e9b8a41-897b-4f2d-840f-2560bb8fc312")
+		(uuid "9067eae1-7dcb-4d2d-a876-69c48549a1ed")
 	)
-	(label "LCD_01"
+	(label "LCD1"
 		(at 195.58 78.74 180)
 		(effects
 			(font
@@ -3848,17 +3848,37 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "a74b62fc-f36b-4c97-8c0c-fc92fb2c3a31")
+		(uuid "a3b0acc0-723b-4a1e-aaaf-a0fc49224b7b")
 	)
-	(label "LCD_10"
-		(at 195.58 102.87 180)
+	(label "LCD9"
+		(at 195.58 100.33 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right bottom)
 		)
-		(uuid "dbbf0341-df8b-4b59-a2d4-e9b9f2079ede")
+		(uuid "abdf13b1-f714-41c5-bfa9-11b19acc8cae")
+	)
+	(label "LCD6"
+		(at 195.58 92.71 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c26ab9b3-639e-46e6-97a5-3c8acdae3e11")
+	)
+	(label "LCD0"
+		(at 195.58 76.2 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e7a68bff-2e94-4f61-9f4e-50e4a8521f57")
 	)
 	(label "GPIO38"
 		(at 105.41 78.74 0)
@@ -3870,7 +3890,17 @@
 		)
 		(uuid "e97d8a77-fcd6-44fc-816d-640d78c12bbd")
 	)
-	(label "LCD_05"
+	(label "LCD7"
+		(at 195.58 95.25 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ed116631-a76b-4161-a6c9-d0225a344337")
+	)
+	(label "LCD5"
 		(at 195.58 90.17 180)
 		(effects
 			(font
@@ -3878,10 +3908,21 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "fe45d7e2-c7b9-4f6a-a2be-31abf13a3666")
+		(uuid "f5942353-d9a3-4d7d-ad65-1d3cc792380f")
+	)
+	(hierarchical_label "LCD_EN"
+		(shape output)
+		(at 96.52 64.77 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "16944418-23e1-48bb-8594-494d35bab645")
 	)
 	(hierarchical_label "LCD[0..10]"
-		(shape output)
+		(shape bidirectional)
 		(at 157.48 106.68 180)
 		(effects
 			(font
@@ -3901,17 +3942,6 @@
 			(justify left)
 		)
 		(uuid "5eba9bac-eaa6-411a-b3cb-2d6ad3b1da56")
-	)
-	(hierarchical_label "LCD_EN"
-		(shape output)
-		(at 78.74 59.69 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "db822008-41b1-4be5-b204-110a7c95a452")
 	)
 	(symbol
 		(lib_id "Transistor_BJT:MUN5211DW1")
